@@ -4,17 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace desafioTecnicoParte2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class JurosControllerr : ControllerBase
+    public class JurosController : ControllerBase
     {
-        // GET: api/<JurosControllerr>
+
         [HttpGet]
-        [Route("calculajuros")]
+        [Route("/calculajuros")]
         public double GetCalculaJuros(double valorInicial, double juros, double tempo)
         {
             //consultar a API 1 para buscar os juros
@@ -26,7 +24,7 @@ namespace desafioTecnicoParte2.Controllers
         [Route("/showmethecode")]
         public string GetTheCode()
         {
-            return ;
+            return "https://github.com/dvespasiano/desafioTecnicoParte2";
         }
     }
 }
