@@ -12,12 +12,13 @@ namespace desafioTecnicoParte2.Controllers
     {
         [HttpGet]
         [Route("/calculajuros")]
-        public double GetCalculaJuros(double valorinicial, double meses)
+        public string GetCalculaJuros(double valorinicial, double meses)
         {
             //consultar a API 1 para buscar os juros
             var juros = 0.01;
             var valorFinal = valorinicial * Math.Pow((1 + juros), meses);
-            return Math.Truncate(valorFinal);
+            //var valorFinalTruncado = valorFinal.ToString("0.00");
+            return valorFinal.ToString("0.00");
         }
 
         [HttpGet]
@@ -25,6 +26,7 @@ namespace desafioTecnicoParte2.Controllers
         public string GetTheCode()
         {
             return "https://github.com/dvespasiano/desafioTecnicoParte2";
+
         }
     }
 }
