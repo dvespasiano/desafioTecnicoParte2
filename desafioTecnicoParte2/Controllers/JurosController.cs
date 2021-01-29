@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace desafioTecnicoParte2.Controllers
@@ -14,10 +17,9 @@ namespace desafioTecnicoParte2.Controllers
         [Route("/calculajuros")]
         public string GetCalculaJuros(double valorinicial, double meses)
         {
-            //consultar a API 1 para buscar os juros
-            var juros = 0.01;
+            HttpClient http = new HttpClient();
+            var juros = Convert.ToDouble(http.GetAsync("https://localhost:44378/taxaJuros").Result.Content.ReadAsStringAsync().Result);
             var valorFinal = valorinicial * Math.Pow((1 + juros), meses);
-            //var valorFinalTruncado = valorFinal.ToString("0.00");
             return valorFinal.ToString("0.00");
         }
 
