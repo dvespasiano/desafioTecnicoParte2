@@ -10,13 +10,13 @@ namespace desafioTecnicoParte2.Controllers
     [ApiController]
     public class JurosController : ControllerBase
     {
-
         [HttpGet]
         [Route("/calculajuros")]
-        public double GetCalculaJuros(double valorInicial, double juros, double tempo)
+        public double GetCalculaJuros(double valorinicial, double meses)
         {
             //consultar a API 1 para buscar os juros
-            var valorFinal = valorInicial * Math.Pow((1 + juros), tempo);
+            var juros = 0.01;
+            var valorFinal = valorinicial * Math.Pow((1 + juros), meses);
             return Math.Truncate(valorFinal);
         }
 
